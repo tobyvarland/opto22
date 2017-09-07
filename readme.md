@@ -32,6 +32,39 @@ The default prefixes are as follows:
 | `st`   | String Table          |
 | `ut`   | Up Timer              |
 
+## Usage
+
+```ruby
+# Require gem.
+require "opto22"
+
+# Creates a controller object.
+my_pac = Opto22::PACController.new '1.2.3.4', 'username', 'password'
+
+# Displays the value of an integer variable named "iValue".
+puts my_pac.iValue
+# => 0
+
+# Sets the value of integer iValue.
+my_pac.iValue = 5
+
+# Displays each value from a string table named "stNames" (10 elements).
+my_pac.stNames.each_with_index do |name, index|
+  puts "[#{index}]: #{name}"
+end
+# => [0]: Bob
+# => [1]: Tom
+# => [2]: Susie
+# => [3]: Joe
+# => ...
+
+# Store new names in string table stNames.
+my_pac.stNames = ["Bill", "Fred", "Kevin", "Andrea", ...]
+
+# Change a single name in string table stNames.
+my_pac.stNames[6] = "Mark"
+```
+
 ## Programming Notes
 
 To reduce strain on the controller, non-table variables are retrieved in bulk
